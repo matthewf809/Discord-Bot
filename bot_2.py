@@ -34,15 +34,15 @@ async def bot_uptime():
     await client.say(timedelta_str(datetime.datetime.now() - start_time))
 
 
-@client.command(name="feeling",
+@client.command(name="mood",
                 description="Lets the user know how Krab Borg is currently feeling.",
                 brief="Krab Borg's current mood")
 async def bot_status():
-    bot_feelings = ['Krab Borg is feeling happy...', 'Krab Borg is feeling sad...',
-                    'Krab Borg if feeling annoyed...', 'Krab Borg is feeling mad...',
-                    'Krab Borg if feeling excited...', 'Krab Borg if feeling sleepy...',
-                    'Krab Borg if feeling hungry...', 'Krab Borg if feeling pleased...',
-                    'Krab Borg if feeling thirsty...', 'Krab Borg if feeling anxious...']
+    bot_feelings = ['Krab Borg is feeling happy.', 'Krab Borg is feeling sad.',
+                    'Krab Borg if feeling annoyed.', 'Krab Borg is feeling mad.',
+                    'Krab Borg if feeling excited.', 'Krab Borg if feeling sleepy.',
+                    'Krab Borg if feeling hungry.', 'Krab Borg if feeling pleased.',
+                    'Krab Borg if feeling thirsty.', 'Krab Borg if feeling anxious.']
     await client.say(random.choice(bot_feelings))
 
 
@@ -52,8 +52,8 @@ async def bot_status():
 async def server_rules():
     await client.say("```css\n"
                      "Rules:\n"
-                     "  * No spamming (including advertising).\n"
                      "  * Moderators reserve the right to delete any post.\n"
+                     "  * No spamming (including advertising).\n"
                      "  * No NSFW outside of the NSFW channels.\n"
                      "  * Please communicate using English (English Server only).\n"
                      "  * No asking to be granted roles/moderator roles.\n"
