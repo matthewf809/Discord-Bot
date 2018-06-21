@@ -1,8 +1,18 @@
 import datetime
 import random
 
+from discord.ext import commands
 from discord.ext.commands import Bot
 from discord import Game
+
+
+# Roles listed for easy access
+Admin = "Admin"
+Jr_Admin = "Junior Admin"
+dev = "developer"
+edu = "edu"
+csgo = "csgo"
+
 
 # Global Variables
 BOT_PREFIX = ("?", "!")
@@ -29,14 +39,15 @@ def timedelta_str(dt):
 # Client Commands
 @client.command(name="uptime",
                 description="Lets the user know how long Krab Borg has been online.",
-                brief="Uptime for Krab Borg")
+                brief="Uptime for Krab Borg.")
 async def bot_uptime():
     await client.say(timedelta_str(datetime.datetime.now() - start_time))
 
 
 @client.command(name="mood",
                 description="Lets the user know how Krab Borg is currently feeling.",
-                brief="Krab Borg's current mood")
+                brief="Krab Borg's current mood.")
+@commands.has_role(Admin)
 async def bot_status():
     bot_feelings = ['Krab Borg is feeling happy.', 'Krab Borg is feeling sad.',
                     'Krab Borg if feeling annoyed.', 'Krab Borg is feeling mad.',
@@ -67,10 +78,26 @@ async def invite_link():
     await client.say("https://discord.gg/GxYVgna")
 
 
+@client.command(pass_context = True,
+                name="del",
+                description="Deletes fixed amount of messages from chat history. "
+                            "To work, the user must enter desired amount of "
+                            "messages to be deleted.",
+                brief="Deletes fixed amount of messages.")
+@commands.has_role(Admin)
+async def clear_message_history(ctx, number):
+        number = int(number)
+        counter = 0
+        async for x in client.logs_from(ctx.message.channel, limit = number):
+            if counter < number:
+                await client.delete_message(x)
+                counter += 1
+
+
 # Client Events
 @client.event
 async def on_ready():
-    print("{0} has logged into Discord.".format(client.user.name))
+    print("{0} has signed into Discord.".format(client.user.name))
     await client.change_presence(game=Game(name="with humans"))
 
 
