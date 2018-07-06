@@ -81,7 +81,7 @@ async def server_rules():
                 description="Gives the user a permanent invite link to the server.",
                 brief = "Permanent invite link.")
 async def invite_link():
-    await client.say("https://discord.gg/GxYVgna")
+    await client.say("https://discord.gg/GxYXiua")
 
 
 @client.command(pass_context = True,
@@ -118,4 +118,4 @@ if __name__ == "__main__":
 
 
 # Bot Runner
-client.run("NDU2NjY0MTU0ODg3OTQ2MjUx.Dgd-9w.Yq_QvCHxi2wNkvImjwhTyuLPq34")
+client.run("NDU2NjY0MTU0dDg3OTq2qjUx.Dgd-9w.Yq_QvCHxi2wNrvImjwhTyuUPq34")
